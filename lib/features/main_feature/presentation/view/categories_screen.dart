@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:salla_shop/core/constant/color.dart';
+import 'package:salla_shop/core/helper_widgets/custom_image_widget.dart';
 import 'package:salla_shop/core/helper_widgets/text_widget.dart';
+
+import '../../../../core/dummy/dummy_data.dart';
+
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -14,60 +18,7 @@ class CategoriesScreen extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 20),
-          // Material(
-          //   color: AppColor.white,
-          //   elevation: 0,
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       children: [
-          //         Container(
-          //           alignment: Alignment.center,
-          //           width: Get.width * .2,
-          //           decoration: const BoxDecoration(
-          //             border: Border(
-          //               bottom: BorderSide(
-          //                 color: AppColor.primaryColor,
-          //                 width: 3,
-          //               ),
-          //             ),
-          //           ),
-          //           child: const TextWidget(
-          //             text: 'Women',
-          //           ),
-          //         ),
-          //         Container(
-          //           width: Get.width * .2,
-          //           alignment: Alignment.center,
-          //           decoration: const BoxDecoration(
-          //               // border: Border(
-          //               //   bottom: BorderSide(
-          //               //       color: AppColor.primaryColor, width: 3),
-          //               // ),
-          //               ),
-          //           child: const TextWidget(
-          //             text: 'Men',
-          //           ),
-          //         ),
-          //         Container(
-          //           alignment: Alignment.center,
-          //           width: Get.width * .2,
-          //           decoration: const BoxDecoration(
-          //               // border: Border(
-          //               //   bottom: BorderSide(
-          //               //       color: AppColor.primaryColor, width: 3),
-          //               // ),
-          //               ),
-          //           child: const TextWidget(
-          //             text: 'Kids',
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-          // const SizedBox(height: 20),
+
           Container(
             width: double.infinity,
             height: 110,
@@ -95,40 +46,77 @@ class CategoriesScreen extends StatelessWidget {
           const SizedBox(height: 20),
           ListView.builder(
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: 7,
+            itemCount: images.length,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                width: double.infinity,
-                height: 110,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        blurStyle: BlurStyle.outer,
-                        color: AppColor.grey.withOpacity(.2),
-                        spreadRadius: 3,
-                        blurRadius: 9,
-                      )
-                    ],
-                    color: AppColor.white,
-                    border: Border.all(style: BorderStyle.none),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    TextWidget(
-                      text: 'SUMMER SALES',
-                      color: AppColor.white,
-                      fontSize: 24,
+              return InkWell(
+                onTap: (){
+
+                  Get.bottomSheet(
+                 Container(
+                   height: Get.height,
+                   padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                   child: ListView.separated(
+                     separatorBuilder: (context, index) => const Divider(
+                       height: 20),
+
+                     itemCount: clothesCats.length ,
+                     itemBuilder: (context, index) {
+                     return  TextWidget(
+                       text: clothesCats[index],
+                       color: AppColor.black.withOpacity(.7),
+                       fontSize: 16,
+                       fontWeight: FontWeight.normal,
+
+                     );
+                   },),
+                 ),
+                    backgroundColor: AppColor.white,
+                    elevation: 0,
+                    barrierColor: AppColor.white.withOpacity(.3),
+                    ignoreSafeArea: false,
+                    
+
+
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(15),
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: 120,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left:15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children:  [
+                             TextWidget(
+                              text: cats[index],
+                              color: AppColor.black,
+                              fontSize: 20,
+
+                            ),
+                            ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(15),
+                                bottomRight: Radius.circular(15)
+                              ),
+                              child: CustomPngImageWidget(
+                                imageName: images[index],
+                                width: Get.width/2,
+                                height: Get.height * .9,
+                              ),
+                            )
+
+                          ],
+                        ),
+                      ),
                     ),
-                    TextWidget(
-                      text: 'Up to 50% off',
-                      color: AppColor.white,
-                      fontSize: 15,
-                    ),
-                  ],
+                  ),
                 ),
               );
             },
@@ -137,4 +125,5 @@ class CategoriesScreen extends StatelessWidget {
       ),
     );
   }
+
 }

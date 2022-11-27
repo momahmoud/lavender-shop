@@ -6,6 +6,7 @@ import 'package:salla_shop/core/helper_widgets/custom_image_widget.dart';
 import 'package:salla_shop/core/helper_widgets/text_widget.dart';
 
 import '../../../../core/constant/color.dart';
+import '../../../../generated/assets.dart';
 import '../../cubit/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
 class MainScreen extends StatelessWidget {
@@ -79,18 +80,18 @@ class MainScreen extends StatelessWidget {
                 type: BottomNavigationBarType.fixed,
                 items: [
                   _buildNavigationBarItem(
-                    imageFill: 'home_fill',
-                    image: 'home',
+                    imageFill: Assets.imagesHomeFill,
+                    image: Assets.imagesHome,
                     text: 'Home',
                   ),
                   _buildNavigationBarItem(
-                    imageFill: 'menu_fill',
-                    image: 'menu',
+                    imageFill: Assets.imagesMenuFill,
+                    image: Assets.imagesMenu,
                     text: 'Home',
                   ),
                   _buildNavigationBarItem(
-                    imageFill: 'shopping_cart_fill',
-                    image: 'shopping_cart',
+                    imageFill: Assets.imagesShoppingCartFill,
+                    image: Assets.imagesShoppingCart,
                     text: 'Bag',
                   ),
                   // _buildNavigationBarItem(
@@ -99,13 +100,13 @@ class MainScreen extends StatelessWidget {
                   //   text: 'Bag',
                   // ),
                   _buildNavigationBarItem(
-                    imageFill: 'fav_fill',
-                    image: 'fav',
+                    imageFill: Assets.imagesFavFill,
+                    image: Assets.imagesFav,
                     text: 'Favorites',
                   ),
                   _buildNavigationBarItem(
-                    imageFill: 'account_circle_fill',
-                    image: 'account_circle',
+                    imageFill: Assets.imagesAccountCircleFill,
+                    image: Assets.imagesAccountCircle,
                     text: 'Profile',
                   ),
                 ],

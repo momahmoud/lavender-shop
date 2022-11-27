@@ -13,7 +13,7 @@ class CustomPngImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/images/$imageName.png',
+      '$imageName',
       height: height ?? 30.h,
       width: width ?? 30.w,
       fit: fit ?? BoxFit.fill,
